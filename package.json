@@ -1,0 +1,53 @@
+{
+  "name": "shop",
+  "version": "1.0.0",
+  "description": "package json pro gulp (postcss a babel js)",
+  "main": "gulpfile.babel.js",
+  "scripts": {
+    "gulp": "gulp"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.com:martin-kolar/gulpfile-starter-pack.git"
+  },
+  "author": "Martin Kolar @ igloonet",
+  "license": "ISC",
+  "dependencies": {
+    "babel-cli": "^6.6.5",
+    "babel-core": "^6.18.2",
+    "babel-plugin-transform-runtime": "^6.15.0",
+    "babel-polyfill": "^6.16.0",
+    "babel-preset-latest": "^6.16.0",
+    "babel-preset-stage-0": "^6.5.0",
+    "babel-register": "^6.18.0",
+    "babel-runtime": "^6.18.0",
+    "chalk": "^1.1.1",
+    "gulp": "^3.9.1",
+    "gulp-babel": "^6.1.2",
+    "gulp-cssnano": "^2.1.1",
+    "gulp-line-ending-corrector": "^1.0.1",
+    "gulp-notify": "^2.2.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-postcss": "^6.1.0",
+    "gulp-runtime": "^2.0.0",
+    "gulp-sourcemaps": "^1.6.0",
+    "gulp-util": "^3.0.7",
+    "gulp-watch": "^4.3.6",
+    "node-notifier": "^4.5.0",
+    "postcss": "^5.0.21",
+    "postcss-calc": "^5.2.0",
+    "postcss-color-function": "^2.0.0",
+    "postcss-cssnext": "^2.5.1",
+    "postcss-hexrgba": "^0.2.0",
+    "postcss-inline-svg": "^1.3.2",
+    "postcss-mixins": "^4.0.1",
+    "postcss-sprites": "^3.1.0",
+    "precss": "^1.4.0",
+    "rimraf": "^2.5.2",
+    "run-sequence": "^1.2.1",
+    "webpack": "^1.13.1",
+    "webpack-dev-server": "^1.14.1",
+    "gulp": "^3.9.1",
+    "gulp-install": "^0.6.0"
+  }
+}
