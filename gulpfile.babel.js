@@ -1,6 +1,5 @@
 import gulp from 'gulp';
 import postcss from 'gulp-postcss';
-import postcssOrig from 'postcss';
 import sourcemaps from 'gulp-sourcemaps';
 import chalk from 'chalk';
 import notifier from 'node-notifier';
@@ -21,7 +20,6 @@ import rimraf from 'rimraf';
 import run from 'run-sequence';
 import webpack from 'webpack';
 import webpackConfig from './webpack.config.babel';
-import webpackDevServer from 'webpack-dev-server';
 import gutil from 'gulp-util';
 import watch from 'gulp-watch';
 
@@ -42,10 +40,6 @@ const paths = {
 
 gulp.task('default', cb => {
   run('build:css', 'build:js', 'watch', cb);
-});
-
-gulp.task('server', cb => {
-  run('build:js', 'webpack-dev-server', cb);
 });
 
 gulp.task('build:css', cb => {
@@ -74,12 +68,6 @@ gulp.task('babel', () => {
 
 gulp.task('webpack', cb => {
   let config = Object.create(webpackConfig);
-  config.devtool = 'source-map';
-  config.plugins = [
-    new webpack.ContextReplacementPlugin(/moment[\\\/]locale$/, /^\.\/(cs)$/),
-    new webpack.optimize.DedupePlugin(),
-    new webpack.optimize.UglifyJsPlugin()
-  ];
 
   webpack(config, (err, stats) => {
     if (err) {
@@ -94,26 +82,6 @@ gulp.task('webpack', cb => {
     sendNotify(`Gulp DONE (${getNotifyTime()})`, 'build:js');
 
     cb();
-  });
-});
-
-gulp.task('webpack-dev-server', cb => {
-  let myConfig = Object.create(webpackConfig);
-  myConfig.devtool = 'eval';
-  myConfig.debug = true;
-
-  new webpackDevServer(webpack(myConfig), {
-    publicPath: '/' + myConfig.output.publicPath,
-    stats: {
-      colors: true
-    },
-    hot: true
-  }).listen(8080, 'localhost', err => {
-    if (err) {
-      throw new gutil.PluginError('webpack-dev-server', err);
-    }
-
-    gutil.log('[webpack-dev-server]', 'http://localhost:8080/webpack-dev-server/index.html');
   });
 });
 
